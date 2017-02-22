@@ -16,7 +16,7 @@ int main() {
 
 	auto it = a.begin();
 
-	for (int i = 0; i < n - 1; i++) {
+	for (int i = 0; i < n - 1; i++) {//5개의 풍선은 4번만 반복문을 돌리면 된다  --> 왜? 마지막 한개는 자동으로 제거되니까.
 		
 		cout << (it->second) << ' ';
 		int step = it->first;
@@ -50,7 +50,7 @@ int main() {
 
 			auto temp = it;
 
-			if (temp == a.begin()) {//원형임을 잘생각해야한다. 
+			if (temp == a.begin()) {//시작점에서 왼쪽으로 못간다. 그니깐 끝으로 옮겨줘야한다.
 				temp = a.end();
 			}
 
@@ -60,15 +60,15 @@ int main() {
 
 			for (int i = 1; i < step; i++) {
 
-				if (it == a.begin()) {
+				if (it == a.begin()) {//시작점에서 왼쪽으로 못간다. 그니깐 끝으로 옮겨줘야한다.
 					it = a.end();
 				}
 				--it;
 			}
-
 		}
 	}
-	cout << a.front().second << '\n';
+	
+	cout << a.front().second << '\n'; //마지막 꺼 출력.
 	return 0;
 
 }
