@@ -32,50 +32,54 @@ abcdyx
 
 
 */
-
-
 #include <iostream>
 #include <list>
 #include <string>
+
 using namespace std;
+
 int main() {
-    string s;
-    cin >> s;
-    
-    list<char> editor(s.begin(), s.end());
-    auto cursor = editor.end();
+	string s;
+	cin >> s;
 
-    int n;
-    cin >> n;
-    while (n--) {
-        char cmd;
-        cin >> cmd;
-        if (cmd == 'L') {
-            if (cursor != editor.begin()) {
-                --cursor;
-            }
-        } else if (cmd == 'D') {
-            if (cursor != editor.end()) {
-                ++cursor;
-            }
-        } else if (cmd == 'B') {
-            if (cursor != editor.begin()) {
-                auto temp = cursor;
-                --cursor;
-                editor.erase(cursor);
-                cursor = temp;
-            }
-        } else if (cmd == 'P') {
-            char c;
-            cin >> c;
-            editor.insert(cursor, c);
-        }
-    }
+	list<char> editor(s.begin(), s.end());//처음부터 끝까지 넣는다. 
+	auto cursor = editor.end(); //오토 다시 공부. 아 포인터 역할이네.  지금 오토의 자료형은 포인터라고 보면 된다. 
 
-    for (char c : editor) {
-        cout << c;
-    }
-    cout << '\n';
+	int n;
+	cin >> n;
+	
+	while (n--) {
 
-    return 0;
+		char cmd;
+		cin >> cmd;
+		if (cmd == 'L') {
+			if (cursor != editor.begin()) {
+				--cursor;
+			}
+		}
+		else if (cmd == 'D') {
+			if (cursor != editor.end()) {
+				++cursor;
+			}
+		}else if( cmd == 'B'){ //헷갈릴수도 잇는데 연결리스트이기 떄문에 삭제하고 본래 자리로 되돌아가야한다. 왜?  그이후에 연결된 리스트들도 있기때문에.
+			if (cursor != editor.begin()) {
+				auto temp = cursor;
+				--cursor;
+				editor.erase(cursor);
+				cursor = temp;
+			}
+		}
+		else if (cmd == 'P') {
+			char c;
+			cin >> c;
+			editor.insert(cursor, c);
+		}
+	}
+
+	for (char c : editor) {
+		cout << c;
+	}
+	cout << '\n';
+
+	return 0;
 }
