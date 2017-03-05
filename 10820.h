@@ -29,8 +29,11 @@ SPACE    1    SPACE
 #include <string>
 using namespace std;
 int main() {
+	
     string s;
+	
     while (getline(cin, s)) {
+		
         int lower = 0;
         int upper = 0;
         int number = 0;
@@ -50,3 +53,5 @@ int main() {
         cout << number << ' ' << space << '\n';
     }
     return 0;
+	
+}
