@@ -8,6 +8,7 @@ class Stack {
 
 
 private:
+
 	int arr[10000];
 	int point;
 
@@ -114,7 +115,7 @@ int main(void) {
 	int n;
 	cin >> n;
 
-	Stack s;
+	Stack s = new Stack();
 
 	while (n--) {
 
