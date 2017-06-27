@@ -45,6 +45,3 @@ int main(void){
     printf("%d\n", max-1);
  
 }
-
-
-출처: http://wootool.tistory.com/99 [우투리와툴툴]
